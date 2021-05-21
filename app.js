@@ -8,6 +8,7 @@
 */
 const fs = require('fs');
 const listado = fs.readFileSync('./tareas.json', 'utf-8');
+
 let lista = JSON.parse(listado);
 
 exports.leerTareas = function () {
@@ -19,6 +20,9 @@ exports.agregarTarea = function (tarea) {
     /*
         Registra y guarda una nueva tarea.
     */
+    if(lista.length == 2){
+        return;
+    }
     lista.push(tarea)
     fs.writeFileSync('tareas.json', JSON.stringify(lista))
 }
